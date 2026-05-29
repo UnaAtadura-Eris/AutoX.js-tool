@@ -1,45 +1,45 @@
 // 工具函数：向上寻找 【clickable=true】 的父控件
-function findClickableParent(obj) {
-    if (!obj) return null;
+// function findClickableParent(obj) {
+//     if (!obj) return null;
     
-    let current = obj;
-    // 最多向上找 20 层（足够深）
-    for (let i = 0; i < 10; i++) {
-        if (!current) break;
+//     let current = obj;
+//     // 最多向上找 20 层（足够深）
+//     for (let i = 0; i < 10; i++) {
+//         if (!current) break;
         
-        // 判断：这个控件是否可点击
-        if (current.clickable() === true) {
-            return current;
-        }
+//         // 判断：这个控件是否可点击
+//         if (current.clickable() === true) {
+//             return current;
+//         }
         
-        // 不可点击就继续往上找
-        current = current.parent();
-    }
-    return null;
-}
+//         // 不可点击就继续往上找
+//         current = current.parent();
+//     }
+//     return null;
+// }
 
-// 智能文字点击：自动找可点击的父控件，不用传层数 n！
-function 文字点击(wenzi) {
-    // 查找文字控件
-    let WZ = className("android.widget.TextView").text(wenzi).findOne();
-    if (!WZ) {
-        log("❌ 未找到文字：" + wenzi);
-        return false;
-    }
+// // 智能文字点击：自动找可点击的父控件，不用传层数 n！
+// function 文字点击(wenzi) {
+//     // 查找文字控件
+//     let WZ = className("android.widget.TextView").text(wenzi).findOne();
+//     if (!WZ) {
+//         log("❌ 未找到文字：" + wenzi);
+//         return false;
+//     }
 
-    // 自动找可点击的父控件
-    let clickableObj = findClickableParent(WZ);
-    if (!clickableObj) {
-        log("❌ 找不到可点击的父控件：" + wenzi);
-        return false;
-    }
+//     // 自动找可点击的父控件
+//     let clickableObj = findClickableParent(WZ);
+//     if (!clickableObj) {
+//         log("❌ 找不到可点击的父控件：" + wenzi);
+//         return false;
+//     }
 
-    // 找到就点击
-    log("✅ 点击：" + wenzi);
-    clickableObj.click();
-    //sleep(1000);
-    return true;
-}
+//     // 找到就点击
+//     log("✅ 点击：" + wenzi);
+//     clickableObj.click();
+//     //sleep(1000);
+//     return true;
+// }
 
 function 文字坐标点击(wenzi) {
     // 查找文字控件
